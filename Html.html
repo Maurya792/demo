@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/tailwindcss-animated@1.0.1/src/index.min.js"></script> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Fixed Login Button</title>
+    <style>
+
+    </style>
+</head>
+
+<body class="scroll-smooth">
+    <section class="w-full h-screen bg-red-300 flex flex-row justify-center items-center text-white text-6xl">
+        <p>Page - 1</p>
+        <Button variant="contained">Hello world</Button>
+    </section>
+    <section
+        class="w-full h-screen bg-blue-300 flex flex-col justify-center items-center text-white text-6xl space-y-4">
+        <p>Page - 2</p>
+        <button class="login-button h-fit bg-green-500 px-4 py-4 rounded-md">Login</button>
+    </section>
+
+    <section class="w-full h-screen bg-green-300 flex flex-row justify-center items-center text-white text-6xl">
+        <p>Page - 3</p>
+    </section>
+
+    <section
+        class="w-full h-screen bg-lime-300 flex flex-col justify-center items-center text-white text-6xl space-y-4">
+        <p>Page - 4</p>
+        <button class="login-button  h-fit bg-green-500 px-4 py-4 rounded-md">Login</button>
+    </section>
+
+    <section class="w-full h-screen bg-teal-300 flex flex-row justify-center items-center text-white text-6xl">
+        <p>Page - 5</p>
+    </section>
+
+    <section class="w-full h-screen bg-sky-300 flex flex-col justify-center items-center text-white text-6xl space-y-4">
+        <p>Page - 6</p>
+
+        <button class="login-button  h-fit bg-green-500 px-4 py-4 rounded-md">
+            Login
+        </button>
+    </section>
+
+    <section class="w-full h-screen bg-purple-300 flex flex-row justify-center items-center text-white text-6xl">
+        <p>Page - 7</p>
+    </section>
+
+    <section
+        class="w-full h-screen bg-rose-300 flex flex-col justify-center items-center text-white text-6xl space-y-4">
+        <p>Page - 8</p>
+        <button class="login-button  h-fit bg-green-500 px-4 py-4 rounded-md">Login</button>
+    </section>
+
+
+    <div id="fixed-login-button"
+        class="fixed-login-button fixed md:w-fit  w-full md:bottom-10 bottom-0 md:right-10 border-2 bg-white/60 rounded-t-xl md:rounded-md animate-fade-up animate-once animate-ease-linear animate-normal animate-fill-both">
+        <div class="flex md:flex-col p-5 items-center md:gap-0 gap-4 md:space-y-4 justify-center">
+            <div class="font-bold text-indigo-400 hidden md:block">Click now</div>
+            <div><button class="border px-4 py-2 bg-green-400 font-bold text-white rounded-md">logIn</button></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const fixedLoginButton = document.getElementById("fixed-login-button");
+
+            checkLoginButtonVisibility();
+
+
+            window.addEventListener("scroll", checkLoginButtonVisibility);
+            console.log(window.addEventListener);
+            function checkLoginButtonVisibility() {
+                const loginButtons = document.querySelectorAll(".login-button");
+                for (const loginButton of loginButtons) {
+                    const rect = loginButton.getBoundingClientRect();
+                    console.log(rect);
+                    const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+                    console.log(isVisible);
+                    if (isVisible) {
+                        fixedLoginButton.style.display = "none";
+                        return;
+                    }
+                }
+                fixedLoginButton.style.display = "block";
+            }
+        });
+    </script>
+</body>
+
+</html>
